@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 11% 4%;
+    --foreground: 0 0% 100%;
+    --card: 215 15% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 215 15% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 221 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 69%;
+    --secondary-foreground: 210 11% 4%;
+    --muted: 215 15% 12%;
+    --muted-foreground: 0 0% 69%;
+    --accent: 221 100% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 15% 15%;
+    --input: 215 15% 15%;
+    --ring: 221 100% 56%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 210 11% 4%;
+    --foreground: 0 0% 100%;
+    --card: 215 15% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 215 15% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 221 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 69%;
+    --secondary-foreground: 210 11% 4%;
+    --muted: 215 15% 12%;
+    --muted-foreground: 0 0% 69%;
+    --accent: 221 100% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 15% 15%;
+    --input: 215 15% 15%;
+    --ring: 221 100% 56%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-variant-numeric: tabular-nums;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: clip;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  line-height: 1.625;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  line-height: 1.2;
+}
+
+h1 {
+  letter-spacing: -0.02em;
+}
+
+p {
+  max-width: 65ch;
+}
+
+.hero-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tech-grid {
+  background-image: 
+    linear-gradient(to right, hsl(var(--primary) / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, hsl(var(--primary) / 0.3), hsl(var(--accent) / 0.3));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.glow-effect:hover::before {
+  opacity: 1;
+}
