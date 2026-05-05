@@ -24,7 +24,7 @@ export default function ContatoPage() {
       icon: MapPin,
       label: 'Localização',
       value: 'Rio de Janeiro, RJ - Brasil',
-      href: null
+      href: 'https://www.google.com/maps/place/Gondim+Albuquerque+Negreiros+ADV/@-22.9120557,-43.2115385,17z/data=!3m1!4b1!4m6!3m5!1s0x997f0d18d30c93:0x89839ef280e07a0e!8m2!3d-22.9120607!4d-43.2089636!16s%2Fg%2F11mr35_fw9?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D'
     }
   ];
 
