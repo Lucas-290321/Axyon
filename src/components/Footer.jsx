@@ -70,7 +70,7 @@ export default function Footer() {
             <span className="text-sm font-semibold text-card-foreground mb-4 block">Contato</span>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:axyondesenvolvimento@gmail.com"
+                href="mailto:axyondesenvolvimento@gmail.com?subject=Quero%20fazer%20uma%20consultoria%2For%C3%A7amento"
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-card-foreground transition-colors duration-200"
               >
                 <Mail className="w-4 h-4" />
@@ -83,7 +83,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-card-foreground transition-colors duration-200"
               >
                 <Phone className="w-4 h-4" />
-                <span>(21) 99072-4800</span>
+                <span>(21) 99072-4800/97077-3272</span>
               </a>
             </div>
           </div>
