@@ -40,7 +40,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="https://horizons-cdn.hostinger.com/8d4d2314-a9fa-472c-8ad8-c9a7c6159296/732aadc38a3e27cb7550eb781fe5ee00.jpg"
+              src="https://cdn.discordapp.com/attachments/1486159287070756995/1501032239172030585/WhatsApp_Image_2026-05-03_at_11.08.08.jpeg?ex=69fa98b5&is=69f94735&hm=ae77458b9be21454e241ba548a84988c1e3afc850d9e7996bd26a0fc71b2f476&"
               alt="Axyon Logo"
               className="h-10 w-10 rounded-lg transition-transform duration-300 group-hover:scale-110"
             />
