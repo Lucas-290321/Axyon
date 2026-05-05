@@ -35,7 +35,7 @@ export default function PortfolioPage() {
       name: 'Gerenciamento de estoque e eventos empresarial',
       description: 'Sistema completo de ERP desenvolvido para otimizar processos de uma empresa de médio porte, incluindo, estoque, agenda, financeiro e relatórios avançados.',
       technologies: 'React, Node.js, SQL, Python, Java',
-      image: "https://cdn.discordapp.com/attachments/1486159287070756995/1501051316393480265/image.png?ex=69faaa7a&is=69f958fa&hm=cda0d8ec46d4cc210e7f00daacb5ee3a276d93c7b408588ff0dd14a7f2a4b290&",
+      image: null,
       link: null
     },
     {
