@@ -12,7 +12,7 @@ export default function ContatoPage() {
       icon: Mail,
       label: 'Email',
       value: 'axyondesenvolvimento@gmail.com',
-      href: 'mailto:axyondesenvolvimento@gmail.com'
+      href: 'mailto:axyondesenvolvimento@gmail.com?subject=Quero%20fazer%20uma%20consultoria%2For%C3%A7amento'
     },
     {
       icon: Phone,
@@ -131,7 +131,7 @@ export default function ContatoPage() {
                   <h3 className="text-xl font-semibold mb-4 text-foreground">Horário de atendimento</h3>
                   <div className="space-y-2 text-muted-foreground">
                     <p>Segunda a Sexta: 9h às 18h</p>
-                    <p>Sábado: 9h às 13h</p>
+                    <p>Sábado: 9h às 1h</p>
                     <p>Domingo: Fechado</p>
                   </div>
                 </div>
