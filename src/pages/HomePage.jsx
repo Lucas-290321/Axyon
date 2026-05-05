@@ -38,7 +38,7 @@ export default function HomePage() {
                   <img
                     src="https://cdn.discordapp.com/attachments/1486159287070756995/1501032239172030585/WhatsApp_Image_2026-05-03_at_11.08.08.jpeg?ex=69fa98b5&is=69f94735&hm=ae77458b9be21454e241ba548a84988c1e3afc850d9e7996bd26a0fc71b2f476&"
                     alt="Axyon Logo"
-                    className="h-20 w-20 rounded-2xl mb-6"
+                    className="h-20 w-20 rounded-3x2 mb-6"
                   />
                 </div>
 
