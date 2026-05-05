@@ -18,7 +18,7 @@ export default function ContatoPage() {
       icon: Phone,
       label: 'WhatsApp',
       value: '(21) 99072-4800/97077-3272',
-      href: 'https://wa.me/5521970773272'
+      href: 'https://wa.me/5521990724800'
     },
     {
       icon: MapPin,
