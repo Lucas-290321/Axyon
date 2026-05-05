@@ -36,7 +36,7 @@ export default function HomePage() {
               >
                 <div className="mb-8">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1486159287070756995/1501032239172030585/WhatsApp_Image_2026-05-03_at_11.08.08.jpeg?ex=69fa98b5&is=69f94735&hm=ae77458b9be21454e241ba548a84988c1e3afc850d9e7996bd26a0fc71b2f476&"
+                    src="https://cdn.discordapp.com/attachments/1486159287070756995/1501036165816516799/WhatsApp_Image_2026-05-03_at_11.08.08_coopia.jpeg?ex=69fa9c5d&is=69f94add&hm=a6d20ad2aef60d77e5d4573dadee9366dc2cb40ee66154672c39fcbd92c77d0f&"
                     alt="Axyon Logo"
                     className="h-20 w-20 rounded-2x1 mb-6"
                   />
