@@ -81,7 +81,7 @@ export default function HomePage() {
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1486159287070756995/1501397087433265152/Pasted-20260505-223410_preview_rev_1.png?ex=69fbec80&is=69fa9b00&hm=2d9f766154b46ed74e53b1f805ef26b10e8f2e5dfff770b3da6253fec2acfb20&"
+                    src="https://horizons-cdn.hostinger.com/8d4d2314-a9fa-472c-8ad8-c9a7c6159296/captura-de-tela-2026-05-03-190021-3utMk.png"
                     alt="Desenvolvimento de software moderno"
                     className="w-full h-auto"
                   />
