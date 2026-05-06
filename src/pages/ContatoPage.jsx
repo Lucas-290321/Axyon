@@ -131,8 +131,8 @@ export default function ContatoPage() {
                   <h3 className="text-xl font-semibold mb-4 text-foreground">Horário de atendimento</h3>
                   <div className="space-y-2 text-muted-foreground">
                     <p>Segunda a Sexta: 9h às 18h</p>
-                    <p>Sábado: 9h às 1h</p>
-                    <p>Domingo: Fechado</p>
+                    <p>Sábado: 9h às 12h</p>
+                    <p>Domingo e Feriados: Fechado</p>
                   </div>
                 </div>
               </motion.div>
