@@ -46,27 +46,38 @@ export function useContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
+
+    if (!validateForm()) return;
 
     setLoading(true);
     setError(null);
 
     try {
+      // 🔥 Monta a mensagem
+      const mensagem = `Nome: ${formData.name}
+Email: ${formData.email}
+Mensagem: ${formData.message}`;
+
+      const numero = '5521990724800'; // SEU NÚMERO
+
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+      //  Salva no banco (opcional)
       await pb.collection('contacts').create({
         name: formData.name.trim(),
         email: formData.email.trim(),
         message: formData.message.trim()
       }, { $autoCancel: false });
 
+      //  Abre o WhatsApp com a mensagem pronta
+      window.open(url, '_blank');
+
+      // UI feedback
       setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
-      
-      setTimeout(() => {
-        setSuccess(false);
-      }, 5000);
+
+      setTimeout(() => setSuccess(false), 5000);
+
     } catch (err) {
       console.error('Contact form error:', err);
       setError('Erro ao enviar mensagem. Tente novamente.');
