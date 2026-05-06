@@ -61,46 +61,41 @@ export function useContactForm() {
     setError(null);
 
     try {
-      // Monta mensagem do WhatsApp
       const mensagem = `Nome: ${formData.name}
 Email: ${formData.email}
 Mensagem: ${formData.message}`;
 
-      const numero = '5521990724800'; 
+      const numero = '5521990724800'; // 🔥 TROQUE PELO SEU NÚMERO
       const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-      // Abre WhatsApp SEM quebrar o app
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-      if (isMobile) {
-        window.location.href = url;
-      } else {
-        window.open(url, '_blank');
-      }
-
-      //  Envia email (não quebra o app se falhar)
+      // 🔥 1. ENVIA EMAIL (não quebra o app)
       try {
         await emailjs.send(
-          'service_kym4obg',   
-          'template_299pxzl',  
+          'service_kym4obg',   // 🔥 TROCAR
+          'template_299pxzl',  // 🔥 TROCAR
           {
             name: formData.name,
             email: formData.email,
             message: formData.message
           },
-          '2GWDk5_pO306p3r6_'    
+          '2GWDk5_pO306p3r6_'    // 🔥 TROCAR
         );
       } catch (emailError) {
         console.error('Erro no EmailJS:', emailError);
       }
 
-      //  Sempre executa (evita tela preta)
+      // 🔥 2. Atualiza UI (antes de abrir WhatsApp)
       setSuccess(true);
       setFormData({
         name: '',
         email: '',
         message: ''
       });
+
+      // 🔥 3. Abre WhatsApp depois (evita tela preta)
+      setTimeout(() => {
+        window.open(url, '_blank');
+      }, 300);
 
       setTimeout(() => setSuccess(false), 5000);
 
