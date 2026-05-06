@@ -24,10 +24,30 @@ export function useContactForm() {
   };
 
   const validateForm = () => {
-    if (!formData.name.trim()) return setError('Nome obrigatório'), false;
-    if (!formData.email.trim()) return setError('Email obrigatório'), false;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return setError('Email inválido'), false;
-    if (!formData.message.trim()) return setError('Mensagem obrigatória'), false;
+    if (!formData.name.trim()) {
+      setError('Nome é obrigatório');
+      return false;
+    }
+
+    if (!formData.email.trim()) {
+      setError('Email é obrigatório');
+      return false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setError('Email inválido');
+      return false;
+    }
+
+    if (!formData.message.trim()) {
+      setError('Mensagem é obrigatória');
+      return false;
+    }
+
+    if (formData.message.trim().length < 10) {
+      setError('Mensagem deve ter pelo menos 10 caracteres');
+      return false;
+    }
 
     return true;
   };
@@ -41,16 +61,16 @@ export function useContactForm() {
     setError(null);
 
     try {
-      // 🔥 MENSAGEM WHATSAPP
+      // Monta mensagem do WhatsApp
       const mensagem = `Nome: ${formData.name}
 Email: ${formData.email}
 Mensagem: ${formData.message}`;
 
-      const numero = '5521990724800'; // 🔥 SEU NÚMERO
+      const numero = '5521990724800'; 
       const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-      // 🔥 ABRE WHATSAPP IMEDIATO
-      const isMobile = /Android|iPhone/i.test(navigator.userAgent);
+      // Abre WhatsApp SEM quebrar o app
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
       if (isMobile) {
         window.location.href = url;
@@ -58,26 +78,35 @@ Mensagem: ${formData.message}`;
         window.open(url, '_blank');
       }
 
-      // 🔥 ENVIA EMAIL (SEM BACKEND)
-      await emailjs.send(
-        'service_kym4obg',
-        'template_299pxzl',
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        },
-        '2GWDk5_pO306p3r6_'
-      );
+      //  Envia email (não quebra o app se falhar)
+      try {
+        await emailjs.send(
+          'service_kym4obg',   
+          'template_299pxzl',  
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+          },
+          '2GWDk5_pO306p3r6_'    
+        );
+      } catch (emailError) {
+        console.error('Erro no EmailJS:', emailError);
+      }
 
+      //  Sempre executa (evita tela preta)
       setSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
 
       setTimeout(() => setSuccess(false), 5000);
 
     } catch (err) {
-      console.error(err);
-      setError('Erro ao enviar.');
+      console.error('Erro geral:', err);
+      setError('Erro ao enviar mensagem.');
     } finally {
       setLoading(false);
     }
