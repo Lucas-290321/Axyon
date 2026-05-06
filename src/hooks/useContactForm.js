@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import pb from '@/lib/pocketbaseClient';
+import emailjs from 'emailjs-com';
 
 export function useContactForm() {
   const [formData, setFormData] = useState({
@@ -7,6 +7,7 @@ export function useContactForm() {
     email: '',
     message: ''
   });
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -23,30 +24,10 @@ export function useContactForm() {
   };
 
   const validateForm = () => {
-    if (!formData.name.trim()) {
-      setError('Nome é obrigatório');
-      return false;
-    }
-
-    if (!formData.email.trim()) {
-      setError('Email é obrigatório');
-      return false;
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setError('Email inválido');
-      return false;
-    }
-
-    if (!formData.message.trim()) {
-      setError('Mensagem é obrigatória');
-      return false;
-    }
-
-    if (formData.message.trim().length < 10) {
-      setError('Mensagem deve ter pelo menos 10 caracteres');
-      return false;
-    }
+    if (!formData.name.trim()) return setError('Nome obrigatório'), false;
+    if (!formData.email.trim()) return setError('Email obrigatório'), false;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return setError('Email inválido'), false;
+    if (!formData.message.trim()) return setError('Mensagem obrigatória'), false;
 
     return true;
   };
@@ -60,17 +41,16 @@ export function useContactForm() {
     setError(null);
 
     try {
-      // 🔥 Mensagem formatada
+      // 🔥 MENSAGEM WHATSAPP
       const mensagem = `Nome: ${formData.name}
 Email: ${formData.email}
 Mensagem: ${formData.message}`;
 
-      const numero = '5521990724800'; // 🔥 COLOQUE SEU NÚMERO REAL
-
+      const numero = '5521990724800'; // 🔥 SEU NÚMERO
       const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-      // 🔥 ABRE IMEDIATAMENTE (EVITA BLOQUEIO)
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      // 🔥 ABRE WHATSAPP IMEDIATO
+      const isMobile = /Android|iPhone/i.test(navigator.userAgent);
 
       if (isMobile) {
         window.location.href = url;
@@ -78,27 +58,17 @@ Mensagem: ${formData.message}`;
         window.open(url, '_blank');
       }
 
-      // 🔥 EXECUTA EM SEGUNDO PLANO (NÃO BLOQUEIA O WHATSAPP)
-      setTimeout(async () => {
-        try {
-          // Salva no banco
-          await pb.collection('contacts').create({
-            name: formData.name.trim(),
-            email: formData.email.trim(),
-            message: formData.message.trim()
-          }, { $autoCancel: false });
-
-          // Envia email
-          await fetch('http://localhost:3001/send-email', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-          });
-
-        } catch (err) {
-          console.error('Erro secundário:', err);
-        }
-      }, 0);
+      // 🔥 ENVIA EMAIL (SEM BACKEND)
+      await emailjs.send(
+        'service_kym4obg',
+        'template_299pxzl',
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        },
+        '2GWDk5_pO306p3r6_'
+      );
 
       setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
@@ -107,16 +77,10 @@ Mensagem: ${formData.message}`;
 
     } catch (err) {
       console.error(err);
-      setError('Erro ao enviar mensagem.');
+      setError('Erro ao enviar.');
     } finally {
       setLoading(false);
     }
-  };
-
-  const resetForm = () => {
-    setFormData({ name: '', email: '', message: '' });
-    setError(null);
-    setSuccess(false);
   };
 
   return {
@@ -125,7 +89,6 @@ Mensagem: ${formData.message}`;
     error,
     success,
     handleChange,
-    handleSubmit,
-    resetForm
+    handleSubmit
   };
 }
