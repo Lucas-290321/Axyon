@@ -13,10 +13,12 @@ export function useContactForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
     if (error) setError(null);
   };
 
@@ -25,22 +27,27 @@ export function useContactForm() {
       setError('Nome é obrigatório');
       return false;
     }
+
     if (!formData.email.trim()) {
       setError('Email é obrigatório');
       return false;
     }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       setError('Email inválido');
       return false;
     }
+
     if (!formData.message.trim()) {
       setError('Mensagem é obrigatória');
       return false;
     }
+
     if (formData.message.trim().length < 10) {
       setError('Mensagem deve ter pelo menos 10 caracteres');
       return false;
     }
+
     return true;
   };
 
@@ -53,34 +60,54 @@ export function useContactForm() {
     setError(null);
 
     try {
-      // 🔥 Monta a mensagem
+      // 🔥 Mensagem formatada
       const mensagem = `Nome: ${formData.name}
 Email: ${formData.email}
 Mensagem: ${formData.message}`;
 
-      const numero = '5521990724800'; // SEU NÚMERO
+      const numero = '5521990724800'; // 🔥 COLOQUE SEU NÚMERO REAL
 
       const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-      //  Salva no banco (opcional)
-      await pb.collection('contacts').create({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        message: formData.message.trim()
-      }, { $autoCancel: false });
+      // 🔥 ABRE IMEDIATAMENTE (EVITA BLOQUEIO)
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      //  Abre o WhatsApp com a mensagem pronta
-      window.open(url, '_blank');
+      if (isMobile) {
+        window.location.href = url;
+      } else {
+        window.open(url, '_blank');
+      }
 
-      // UI feedback
+      // 🔥 EXECUTA EM SEGUNDO PLANO (NÃO BLOQUEIA O WHATSAPP)
+      setTimeout(async () => {
+        try {
+          // Salva no banco
+          await pb.collection('contacts').create({
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            message: formData.message.trim()
+          }, { $autoCancel: false });
+
+          // Envia email
+          await fetch('http://localhost:3001/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+        } catch (err) {
+          console.error('Erro secundário:', err);
+        }
+      }, 0);
+
       setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
 
       setTimeout(() => setSuccess(false), 5000);
 
     } catch (err) {
-      console.error('Contact form error:', err);
-      setError('Erro ao enviar mensagem. Tente novamente.');
+      console.error(err);
+      setError('Erro ao enviar mensagem.');
     } finally {
       setLoading(false);
     }
