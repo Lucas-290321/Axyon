@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Linkedin, Github, Instagram, Mail, Phone } from 'lucide-react';
+import {
+  Linkedin,
+  Github,
+  Instagram,
+  Mail,
+  Phone,
+} from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,55 +16,136 @@ export default function Footer() {
     { path: '/sobre', label: 'Sobre' },
     { path: '/servicos', label: 'Serviços' },
     { path: '/portfolio', label: 'Portfólio' },
-    { path: '/contato', label: 'Contato' }
+    { path: '/contato', label: 'Contato' },
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' }
+    {
+      icon: Linkedin,
+      href: 'https://linkedin.com',
+      label: 'LinkedIn',
+    },
+    {
+      icon: Github,
+      href: 'https://github.com',
+      label: 'GitHub',
+    },
+    {
+      icon: Instagram,
+      href: 'https://instagram.com',
+      label: 'Instagram',
+    },
   ];
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-border overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
+
+        {/* CONTEÚDO */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+
+          {/* LOGO + DESCRIÇÃO */}
+          <div className="w-full">
+            <div className="flex items-center gap-3 mb-5">
+
               <img
-                src="https://cdn.discordapp.com/attachments/1486159287070756995/1501036165816516799/WhatsApp_Image_2026-05-03_at_11.08.08_coopia.jpeg?ex=69fa9c5d&is=69f94add&hm=a6d20ad2aef60d77e5d4573dadee9366dc2cb40ee66154672c39fcbd92c77d0f&"
+                src="/Logo_01.jpeg"
                 alt="Axyon Logo"
-                className="h-10 w-10 rounded-lg"
+                className="
+                  w-12 h-12
+                  sm:w-14 sm:h-14
+                  object-cover
+                  rounded-xl
+                  shadow-lg
+                  border border-white/10
+                  flex-shrink-0
+                "
               />
-              <span className="text-xl font-bold text-card-foreground">Axyon</span>
+
+              <span
+                className="
+                  text-xl
+                  sm:text-2xl
+                  font-bold
+                  text-card-foreground
+                  truncate
+                "
+              >
+                Axyon
+              </span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+
+            <p
+              className="
+                text-sm
+                sm:text-base
+                text-muted-foreground
+                leading-relaxed
+                mb-5
+                max-w-md
+              "
+            >
               Engenharia de software com visão de futuro.
             </p>
-            <div className="flex gap-3">
+
+            {/* REDES SOCIAIS */}
+            <div className="flex flex-wrap gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-200"
                   aria-label={social.label}
+                  className="
+                    w-10 h-10
+                    rounded-xl
+                    bg-muted
+                    flex
+                    items-center
+                    justify-center
+                    text-muted-foreground
+                    hover:bg-primary
+                    hover:text-primary-foreground
+                    transition-all
+                    duration-300
+                    hover:scale-110
+                  "
                 >
-                  <social.icon className="w-4 h-4" />
+                  <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
           </div>
 
-          <div>
-            <span className="text-sm font-semibold text-card-foreground mb-4 block">Links rápidos</span>
-            <nav className="flex flex-col gap-2">
+          {/* LINKS */}
+          <div className="w-full">
+            <span
+              className="
+                text-base
+                font-semibold
+                text-card-foreground
+                mb-5
+                block
+              "
+            >
+              Links rápidos
+            </span>
+
+            <nav className="flex flex-col gap-3">
               {quickLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-sm text-muted-foreground hover:text-card-foreground transition-colors duration-200"
+                  className="
+                    text-sm
+                    sm:text-base
+                    text-muted-foreground
+                    hover:text-card-foreground
+                    transition-colors
+                    duration-200
+                    break-words
+                  "
                 >
                   {link.label}
                 </Link>
@@ -66,39 +153,130 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div>
-            <span className="text-sm font-semibold text-card-foreground mb-4 block">Contato</span>
-            <div className="flex flex-col gap-3">
+          {/* CONTATO */}
+          <div className="w-full">
+            <span
+              className="
+                text-base
+                font-semibold
+                text-card-foreground
+                mb-5
+                block
+              "
+            >
+              Contato
+            </span>
+
+            <div className="flex flex-col gap-4">
+
+              {/* EMAIL */}
               <a
                 href="mailto:axyondesenvolvimento@gmail.com?subject=Quero%20fazer%20uma%20consultoria%2For%C3%A7amento"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-card-foreground transition-colors duration-200"
+                className="
+                  flex
+                  items-start
+                  gap-3
+                  text-sm
+                  sm:text-base
+                  text-muted-foreground
+                  hover:text-card-foreground
+                  transition-colors
+                  duration-200
+                  break-all
+                "
               >
-                <Mail className="w-4 h-4" />
-                <span>axyondesenvolvimento@gmail.com</span>
+                <Mail className="w-5 h-5 flex-shrink-0 mt-0.5" />
+
+                <span className="leading-relaxed">
+                  axyondesenvolvimento@gmail.com
+                </span>
               </a>
+
+              {/* TELEFONE */}
               <a
                 href="https://wa.me/5521990724800"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-card-foreground transition-colors duration-200"
+                className="
+                  flex
+                  items-start
+                  gap-3
+                  text-sm
+                  sm:text-base
+                  text-muted-foreground
+                  hover:text-card-foreground
+                  transition-colors
+                  duration-200
+                  break-words
+                "
               >
-                <Phone className="w-4 h-4" />
-                <span>(21) 99072-4800/97077-3272</span>
+                <Phone className="w-5 h-5 flex-shrink-0 mt-0.5" />
+
+                <span className="leading-relaxed">
+                  (21) 99072-4800 / 97077-3272
+                </span>
               </a>
             </div>
           </div>
         </div>
 
+        {/* RODAPÉ FINAL */}
         <div className="pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
+          <div
+            className="
+              flex
+              flex-col
+              lg:flex-row
+              justify-between
+              items-center
+              gap-5
+              text-center
+              lg:text-left
+            "
+          >
+            <p
+              className="
+                text-sm
+                text-muted-foreground
+                leading-relaxed
+              "
+            >
               © {currentYear} Axyon. Todos os direitos reservados.
             </p>
-            <div className="flex gap-6">
-              <Link to="/privacidade" className="text-sm text-muted-foreground hover:text-card-foreground transition-colors duration-200">
+
+            <div
+              className="
+                flex
+                flex-col
+                sm:flex-row
+                items-center
+                gap-4
+                sm:gap-6
+              "
+            >
+              <Link
+                to="/privacidade"
+                className="
+                  text-sm
+                  text-muted-foreground
+                  hover:text-card-foreground
+                  transition-colors
+                  duration-200
+                "
+              >
                 Política de Privacidade
               </Link>
-              <Link to="/termos" className="text-sm text-muted-foreground hover:text-card-foreground transition-colors duration-200">
+
+              <Link
+                to="/termos"
+                className="
+                  text-sm
+                  text-muted-foreground
+                  hover:text-card-foreground
+                  transition-colors
+                  duration-200
+                "
+              >
                 Termos de Serviço
               </Link>
             </div>
