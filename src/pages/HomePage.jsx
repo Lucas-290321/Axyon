@@ -44,7 +44,7 @@ export default function HomePage() {
                 {/* LOGO */}
                 <div className="mb-8 flex justify-center lg:justify-start">
                   <img
-                    src="/logo.png"
+                    src="/Axyon_Logo_01"
                     alt="Axyon Logo"
                     className="
                       w-24 h-24
