@@ -12,52 +12,100 @@ export default function HomePage() {
     <>
       <Helmet>
         <title>Axyon - Transformando ideias em soluções digitais de alto impacto</title>
+
         <meta
           name="description"
           content="Engenharia de software com visão de futuro. Desenvolvemos soluções digitais inovadoras e escaláveis para empresas que buscam excelência tecnológica."
         />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <meta name="google" content="notranslate" />
       </Helmet>
 
-      <div className="min-h-screen bg-background notranslate" translate="no">
+      <div className="min-h-screen bg-background notranslate overflow-x-hidden" translate="no">
         <Header />
 
         <div className="hero-grain" />
 
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden tech-grid">
+        <section className="relative min-h-screen flex items-center justify-center overflow-visible tech-grid">
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-32 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              
+              {/* TEXTO */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
+                className="w-full"
               >
-                <div className="mb-8">
+                {/* LOGO */}
+                <div className="mb-8 flex justify-center lg:justify-start">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1486159287070756995/1501036165816516799/WhatsApp_Image_2026-05-03_at_11.08.08_coopia.jpeg?ex=69fa9c5d&is=69f94add&hm=a6d20ad2aef60d77e5d4573dadee9366dc2cb40ee66154672c39fcbd92c77d0f&"
+                    src="/logo.png"
                     alt="Axyon Logo"
-                    className="h-20 w-20 rounded-lg mb-6"
+                    className="
+                      w-24 h-24
+                      sm:w-28 sm:h-28
+                      md:w-32 md:h-32
+                      lg:w-36 lg:h-36
+                      object-cover
+                      rounded-2xl
+                      shadow-2xl
+                      border border-white/10
+                      transition-all duration-300
+                    "
                   />
                 </div>
 
+                {/* TITULO */}
                 <h1
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight break-words notranslate"
+                  className="
+                    text-3xl
+                    sm:text-4xl
+                    md:text-5xl
+                    lg:text-6xl
+                    font-bold
+                    mb-6
+                    leading-tight
+                    break-words
+                    text-center
+                    lg:text-left
+                    notranslate
+                  "
                   translate="no"
                 >
                   Transformando ideias em soluções digitais de alto impacto
                 </h1>
 
-                <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+                {/* DESCRIÇÃO */}
+                <p
+                  className="
+                    text-base
+                    sm:text-lg
+                    md:text-xl
+                    text-muted-foreground
+                    mb-8
+                    leading-relaxed
+                    text-center
+                    lg:text-left
+                  "
+                >
                   Desenvolvemos software sob medida com tecnologias de ponta,
                   focando em escalabilidade, performance e inovação contínua.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                {/* BOTÕES */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <Button asChild size="lg" className="group w-full sm:w-auto">
                     <Link to="/sobre">
-                      Conhecer a <span className="notranslate" translate="no">Axyon</span>
+                      Conhecer a{' '}
+                      <span className="notranslate" translate="no">
+                        Axyon
+                      </span>
+
                       <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
@@ -73,18 +121,20 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
+              {/* IMAGEM */}
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
+                className="relative w-full"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20">
                   <img
                     src="https://horizons-cdn.hostinger.com/8d4d2314-a9fa-472c-8ad8-c9a7c6159296/captura-de-tela-2026-05-03-190021-3utMk.png"
                     alt="Desenvolvimento de software moderno"
-                    className="w-full h-auto"
+                    className="w-full h-auto object-cover"
                   />
+
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
                 </div>
               </motion.div>
@@ -92,6 +142,7 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* FEATURES */}
         <section className="py-20 sm:py-24 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -102,10 +153,18 @@ export default function HomePage() {
               className="text-center mb-16"
             >
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 notranslate"
+                className="
+                  text-2xl
+                  sm:text-3xl
+                  md:text-4xl
+                  font-bold
+                  mb-4
+                  notranslate
+                "
                 translate="no"
               >
-                Por que escolher a <span className="notranslate">Axyon</span>
+                Por que escolher a{' '}
+                <span className="notranslate">Axyon</span>
               </h2>
 
               <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -141,15 +200,33 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-card rounded-2xl p-6 sm:p-8 min-h-[280px] border border-border hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+                  className="
+                    bg-card
+                    rounded-2xl
+                    p-6
+                    sm:p-8
+                    min-h-[280px]
+                    border
+                    border-border
+                    hover:shadow-lg
+                    hover:shadow-primary/10
+                    transition-all
+                    duration-300
+                  "
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                     <feature.icon className="w-6 h-6 text-primary" />
                   </div>
 
                   <h3
-                    className="text-base sm:text-lg font-semibold mb-3 break-words leading-snug notranslate"
-                    translate="no"
+                    className="
+                      text-base
+                      sm:text-lg
+                      font-semibold
+                      mb-3
+                      break-words
+                      leading-snug
+                    "
                   >
                     {feature.title}
                   </h3>
@@ -163,6 +240,7 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* CTA */}
         <section className="py-20 sm:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -170,10 +248,28 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-6 sm:p-10 md:p-16 text-center border border-primary/20"
+              className="
+                bg-gradient-to-br
+                from-primary/10
+                to-accent/10
+                rounded-3xl
+                p-6
+                sm:p-10
+                md:p-16
+                text-center
+                border
+                border-primary/20
+              "
             >
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 notranslate"
+                className="
+                  text-2xl
+                  sm:text-3xl
+                  md:text-4xl
+                  font-bold
+                  mb-6
+                  notranslate
+                "
                 translate="no"
               >
                 Pronto para transformar sua ideia em realidade?
@@ -187,6 +283,7 @@ export default function HomePage() {
               <Button asChild size="lg" className="group w-full sm:w-auto">
                 <Link to="/contato">
                   Iniciar projeto
+
                   <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
