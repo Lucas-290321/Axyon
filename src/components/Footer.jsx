@@ -22,7 +22,7 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: Linkedin,
-      href: 'https://linkedin.com',
+      href: 'www.linkedin.com/in/axyon-desenvolvimento-003b07408',
       label: 'LinkedIn',
     },
     {
@@ -32,7 +32,7 @@ export default function Footer() {
     },
     {
       icon: Instagram,
-      href: 'https://instagram.com',
+      href: 'https://www.instagram.com/useaxyon?igsh=bXFocmtpYnEwcjU0',
       label: 'Instagram',
     },
   ];
