@@ -60,7 +60,7 @@ export default function Header() {
               className="flex items-center gap-3 min-w-0 group"
             >
               <img
-                src="/logo_02.jpeg"
+                src="/Logo_02.jpeg"
                 alt="Axyon Logo"
                 className="
                   w-10 h-10
